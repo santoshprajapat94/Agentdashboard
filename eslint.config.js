@@ -33,6 +33,8 @@ export default [
         'warn',
         { allowConstantExport: true },
       ],
+      // Set no-unused-vars to warn instead of error
+      'no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
     },
   },
 ]
