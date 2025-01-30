@@ -13,7 +13,7 @@ import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { toast } from "react-toastify";
 import { data } from "../firebase/Firebase";
-import Layout from "../layouts";
+import Layout from "../layouts/Index";
 
 const auth = getAuth(data);
 

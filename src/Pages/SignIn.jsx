@@ -215,7 +215,7 @@ const LoginPage = () => {
                   onClick={() => navigate("/account")}
                   className="text-indigo-500 hover:underline"
                 >
-                  Don't have an account? Create New Account
+                   Create New Account
                 </Button>
               </div>
             </form>
