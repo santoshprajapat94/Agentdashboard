@@ -1,8 +1,8 @@
 import React from "react";
-import Layout from "../layouts/Index"; // Assuming you have a Layout component
 import MicIcon from "@mui/icons-material/Mic";
 import SmartToyIcon from "@mui/icons-material/SmartToy";
 import SettingsVoiceIcon from "@mui/icons-material/SettingsVoice";
+import Layout from "../layouts/Index";
 
 const AboutUs = () => {
   return (

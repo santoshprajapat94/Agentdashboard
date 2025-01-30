@@ -14,6 +14,7 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { toast } from "react-toastify";
 import { data } from "../firebase/Firebase";
 import Layout from "../layouts/Index";
+import { Navigate } from "react-router-dom";
 
 const auth = getAuth(data);
 
@@ -180,7 +181,7 @@ export const CreateAccount = () => {
               <div className="text-center">
                 <Button
                   variant="text"
-                  onClick={() => navigate("/login")}
+                  onClick={() => Navigate("/login")}
                   className="text-indigo-500 hover:underline"
                 >
                   Already have an account? Login here

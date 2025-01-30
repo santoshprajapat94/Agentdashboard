@@ -19,8 +19,8 @@ import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import Layout from "../layouts/Index";
 import { toast } from "react-toastify";
+import Layout from "../layouts/Index";
 
 const auth = getAuth(data);
 

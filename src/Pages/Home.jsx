@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import Layout from "../layouts";
 import { Button, Box, Card, CardContent, CardMedia, Typography } from "@mui/material";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
@@ -16,6 +14,7 @@ import adminImage7 from "../assets/images/s5.jpg";
 import adminImage8 from "../assets/images/s6.jpg";
 import adminImage9 from "../assets/images/s7.jpg";
 import Loading from "../components/Loding";
+import Layout from "../layouts/Index";
 
 
 const Home = () => {
@@ -86,13 +85,13 @@ const Home = () => {
         <div className="max-w-4xl mx-auto space-y-8">
           {/* Testimonial 1 */}
           <div className="bg-gray-800 p-8 rounded-lg shadow-xl">
-            <p className="text-lg text-gray-300 mb-4">"This AI-powered platform has transformed the way we manage operations. Our efficiency has skyrocketed!"</p>
+            <p className="text-lg text-gray-300 mb-4">This AI-powered platform has transformed the way we manage operations. Our efficiency has skyrocketed!</p>
             <p className="font-semibold text-white">John Doe, CEO of Tech Solutions</p>
           </div>
 
           {/* Testimonial 2 */}
           <div className="bg-gray-800 p-8 rounded-lg shadow-xl">
-            <p className="text-lg text-gray-300 mb-4">"The integration was seamless, and the AI agent is doing wonders in automating tasks we never thought possible."</p>
+            <p className="text-lg text-gray-300 mb-4">The integration was seamless, and the AI agent is doing wonders in automating tasks we never thought possible.</p>
             <p className="font-semibold text-white">Jane Smith, Operations Manager at Innovate Inc.</p>
           </div>
         </div>
