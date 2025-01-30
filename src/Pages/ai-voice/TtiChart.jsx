@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { Box, Typography, Card } from '@mui/material'
 import ReactApexChart from 'react-apexcharts'
 // import AxiosHelper from '../../../helper/AxiosHelper'
-import CardHeading, { endOfMonthDefault, startOfMonthDefault } from './cardHeading'
+// import CardHeading, { endOfMonthDefault, startOfMonthDefault } from './cardHeading'
 import { DashboardNoDat } from './WasteChart'
+import CardHeading, {endOfMonthDefault , startOfMonthDefault} from './cardHeading'
 // import { checkTenantId } from '../../../helper/CommonAPI'
 
 const AvailableBlood = ({ data = [] }) => {

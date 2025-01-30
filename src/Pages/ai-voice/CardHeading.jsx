@@ -349,13 +349,13 @@ import {
                   }}
                 >
                   <FormControl fullWidth>
-                    <FormLabel sx={labelStyles}>From</FormLabel>
+                    <FormLabel >From</FormLabel>
                     <DatePicker
                       format='DD/MM/YYYY'
                       slotProps={{
                         textField: {
                           size: 'small',
-                          sx: { maxWidth: 170, ...inputStyles }
+                          sx: { maxWidth: 170}
                         }
                       }}
                       value={startDate}
@@ -364,14 +364,14 @@ import {
                   </FormControl>
   
                   <FormControl fullWidth>
-                    <FormLabel sx={labelStyles}>To</FormLabel>
+                    <FormLabel>To</FormLabel>
   
                     <DatePicker
                       format='DD/MM/YYYY'
                       slotProps={{
                         textField: {
                           size: 'small',
-                          sx: { maxWidth: 170, ...inputStyles }
+                          sx: { maxWidth: 170}
                         }
                       }}
                       onChange={value => handleEndDateChange(value)}
@@ -383,7 +383,7 @@ import {
                   <Button onClick={handleClear} color='primary' variant='outlined'>
                     Reset
                   </Button>
-                  <LoadingButton title='Submit' onClick={submitCustom} />
+                  <Button title='Submit' onClick={submitCustom} />
                 </Box>
               </MenuItem>
             ) : null}

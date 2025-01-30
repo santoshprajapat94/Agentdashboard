@@ -3,7 +3,7 @@ import { Box, Typography, Card } from '@mui/material'
 import ReactApexChart from 'react-apexcharts'
 // import { bloodGroupAll, checkTenantId } from '../../../helper/CommonAPI'
 // import AxiosHelper from '../../../helper/AxiosHelper'
-import CardHeading, { endOfMonthDefault, startOfMonthDefault } from './cardHeading'
+import CardHeading, {endOfMonthDefault , startOfMonthDefault} from './cardHeading'
 import { DashboardNoDat } from './WasteChart'
 
 export const typeAbbreviationsReverse = {
