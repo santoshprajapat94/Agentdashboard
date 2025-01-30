@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import ReactApexcharts from 'react-apexcharts'
 import { Box, Grid, IconButton, Typography } from '@mui/material'
-import CardHeading from './cardHeading'
 import { DashboardNoDat } from './WasteChart'
-// import ModalCustom from '../../shared/ModalCustom'
 
-// Ensure these imports are correctly defined
 import { bloodGroup, bloodGroupToFilter } from './index'
+import CardHeading from './cardHeading'
 
 export const typeAbbreviations = {
   'Whole Blood (CPDA-1)': 'WB',
