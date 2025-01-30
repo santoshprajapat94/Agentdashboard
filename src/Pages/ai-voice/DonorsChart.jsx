@@ -2,7 +2,7 @@ import { Box, Grid } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import ReactApexChart from 'react-apexcharts'
 // import AxiosHelper from '../../../helper/AxiosHelper'
-import CardHeading, {endOfMonthDefault , startOfMonthDefault} from './cardHeading'
+import CardHeading, {endOfMonthDefault , startOfMonthDefault} from './CardHeading'
 import { DashboardNoDat } from './WasteChart'
 // import { checkTenantId } from '../../../helper/CommonAPI'
 

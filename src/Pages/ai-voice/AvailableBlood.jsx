@@ -4,7 +4,7 @@ import { Box, Grid, IconButton, Typography } from '@mui/material'
 import { DashboardNoDat } from './WasteChart'
 
 import { bloodGroup, bloodGroupToFilter } from './index'
-import CardHeading from './cardHeading'
+import CardHeading from './CardHeading'
 
 export const typeAbbreviations = {
   'Whole Blood (CPDA-1)': 'WB',

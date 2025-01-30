@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import ReactApexChart from 'react-apexcharts'
-import CardHeading from './cardHeading'
 import { Box } from '@mui/material'
+import CardHeading from './CardHeading'
 
 export function DashboardNoDat() {
   return (
