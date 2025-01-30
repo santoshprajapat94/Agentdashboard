@@ -1,7 +1,10 @@
+import { Cached } from '@mui/icons-material';
+import { CircularProgress, IconButton } from '@mui/material';
 import React, { useState } from 'react';
 import { FiSend, FiRefreshCw } from 'react-icons/fi';
 
 const ChatComponent = () => {
+    const [loading ,setLoading] = useState(false)
     const [messages, setMessages] = useState([
         { sender: 'bot', text: 'Hello! 😊 How can I assist you today?' },
         { sender: 'bot', text: 'Are you interested in learning more about vitefire products and services?' },
@@ -20,6 +23,13 @@ const ChatComponent = () => {
             ]);
         }, 1000);
     };
+    const bgcolor1 = {
+        background: 'linear-gradient(98.28deg, #D7E3F6 0.4%, #F0F3F5 100%)'
+      };
+      
+      const bgcolor2 = {
+        background: 'linear-gradient(98.28deg, #EDD9EE 0.4%, #F0F3F5 100%)'
+      };
 
     return (
         <div className="flex flex-col h-screen max-w-md mx-auto  text-white rounded-sm shadow-lg">
@@ -32,12 +42,21 @@ const ChatComponent = () => {
                     />
                     <div>
                         <h3 className="text-sm font-semibold text-gray-800">Santosh</h3>
-                        <p className="text-xs text-green-700">Online with AI</p>
+                        <p className="text-xs" style={{color:'#12bcab'}}>Online with AI</p>
                     </div>
                 </div>
-                <button>
-                    <FiRefreshCw className="text-white  p-2 bg-blue-500 rounded-full hover:bg-blue-800" size={35} />
-                </button>
+                <IconButton
+                  sx={{
+                    background: 'linear-gradient(90deg,#214f89,#12bcab)',
+                    borderRadius: '4px',
+                    color: '#fff',
+                    height: '22px',
+                    width: '22px',
+                    padding: 0
+                  }}
+                >
+                  {loading ? <CircularProgress size={20} sx={{ color: 'white' }} /> : <Cached />}
+                </IconButton>
             </div>
 
             <div className="flex-1 p-2 space-y-4 overflow-y-auto">
@@ -47,11 +66,8 @@ const ChatComponent = () => {
                         className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}
                     >
                         <div
-                            className={`p-3 rounded-lg ${
-                                message.sender === 'user'
-                                    ? 'bg-purple-100 text-slate-600'
-                                    : 'bg-indigo-100 text-slate-600'
-                            }`}
+className="p-3 rounded-lg text-slate-600"
+style={message.sender === 'user' ? bgcolor1 : bgcolor2}
                         >
                             {message.text}
                         </div>
@@ -69,12 +85,20 @@ const ChatComponent = () => {
                         onChange={(e) => setInput(e.target.value)}
                         onKeyDown={(e) => e.key === 'Enter' && handleSendMessage()}
                     />
-                    <button
+                    <IconButton
+                     sx={{
+                        background: 'linear-gradient(90deg,#214f89,#12bcab)',
+                        borderRadius: '4px',
+                        padding:'4px',
+                        color: '#fff',
+                        height: '32px',
+                        width: '32px',
+                        
+                      }}
                         onClick={handleSendMessage}
-                        className="p-2 bg-blue-500 rounded-full hover:bg-blue-600"
                     >
                         <FiSend size={18} />
-                    </button>
+                    </IconButton>
                 </div>
             </div>
         </div>

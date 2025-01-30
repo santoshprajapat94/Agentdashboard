@@ -27,7 +27,7 @@ const Header = () => {
       <nav className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo */}
         <Link to="/" className="text-3xl font-bold italic">
-          ViteFire
+          EHR Logic
         </Link>
 
         {/* Navigation Menu */}

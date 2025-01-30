@@ -354,7 +354,7 @@ const DashboardComp = () => {
       </Grid>
       
         <Grid item xs={12} lg={9} >
-        <ScrollCard style={{ height: 'max-content' }}>
+        <ScrollCard style={{ height:'max-content'}}>
           <section className='dash-card mt-0 pt-2'>
             <Box
               className='dash__tabs '

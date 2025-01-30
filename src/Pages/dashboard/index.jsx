@@ -2,12 +2,15 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
 import DashboardIcon from '@mui/icons-material/Dashboard';
+import { useTheme } from '@mui/material';
+import CloudCircleIcon from '@mui/icons-material/CloudCircle';
 import { AppProvider } from '@toolpad/core/AppProvider';
-import { DashboardLayout } from '@toolpad/core/DashboardLayout';
+import { DashboardLayout, ThemeSwitcher } from '@toolpad/core/DashboardLayout';
 import { useDemoRouter } from '@toolpad/core/internal';
 import SettingsIcon from '@mui/icons-material/Settings';
 import CreateAgent from './CreateAgent';
-
+import SearchIcon from '@mui/icons-material/Search';
+import { IconButton, Stack, TextField, Tooltip, Typography } from '@mui/material';
 const NAVIGATION = [
   {
     segment: '/dashboard',
@@ -26,6 +29,70 @@ const NAVIGATION = [
   },
 ];
 
+
+
+function ToolbarActionsSearch() {
+  return (
+    <Stack direction="row">
+      <Tooltip title="Search" enterDelay={1000}>
+        <div>
+          <IconButton
+            type="button"
+            aria-label="search"
+            sx={{
+              display: { xs: 'inline', md: 'none' },
+            }}
+          >
+            <SearchIcon />
+          </IconButton>
+        </div>
+      </Tooltip>
+      <TextField
+        label="Search"
+        variant="outlined"
+        size="small"
+        slotProps={{
+          input: {
+            endAdornment: (
+              <IconButton type="button" aria-label="search" size="small">
+                <SearchIcon />
+              </IconButton>
+            ),
+            sx: { pr: 0.5 },
+          },
+        }}
+        sx={{ display: { xs: 'none', md: 'inline-block' }, mr: 1 }}
+      />
+      {/* <ThemeSwitcher /> */}
+    </Stack>
+  );
+}
+
+function CustomAppTitle() {
+  return (
+    <Stack direction="row" alignItems="center" spacing={1}>
+      <Typography variant="subtitle1" color="#214f89" fontSize={'large'} fontWeight={700}>EHR LOGIC</Typography>
+    </Stack>
+  );
+}
+
+
+function SidebarFooter({ mini }) {
+  return (
+    <Typography
+      variant="caption"
+      sx={{ m: 1, whiteSpace: 'nowrap', overflow: 'hidden' }}
+    >
+      {mini ? '© MUI' : `© ${new Date().getFullYear()} Made By EHR Logic`}
+    </Typography>
+  );
+}
+
+SidebarFooter.propTypes = {
+  mini: PropTypes.bool.isRequired,
+};
+
+
 function DemoPageContent({ pathname }) {
   return (
     <Box
@@ -37,8 +104,7 @@ function DemoPageContent({ pathname }) {
         textAlign: 'center',
       }}
     >
-      <CreateAgent/>
-      
+      <CreateAgent />
     </Box>
   );
 }
@@ -58,31 +124,25 @@ function DashboardLayoutAccount(props) {
     },
   });
 
-  const authentication = React.useMemo(() => {
-    return {
-      signIn: () => {
-        setSession({
-          user: {
-            name: 'Bharat Kashyap',
-            email: 'bharatkashyap@outlook.com',
-            image: 'https://avatars.githubusercontent.com/u/19550456',
-          },
-        });
-      },
-      signOut: () => {
-        setSession(null);
-      },
-    };
-  }, []);
+  const authentication = React.useMemo(() => ({
+    signIn: () => {
+      setSession({
+        user: {
+          name: 'Bharat Kashyap',
+          email: 'bharatkashyap@outlook.com',
+          image: 'https://avatars.githubusercontent.com/u/19550456',
+        },
+      });
+    },
+    signOut: () => {
+      setSession(null);
+    },
+  }), []);
 
-  const router = useDemoRouter('/');
+  const router = useDemoRouter('/dashboard');
 
   const demoWindow = window !== undefined ? window() : undefined;
-
-  const branding = {
-    title: 'Vitefire',  
-  };
-
+  
   return (
     <AppProvider
       session={session}
@@ -90,20 +150,30 @@ function DashboardLayoutAccount(props) {
       navigation={NAVIGATION}
       router={router}
       window={demoWindow}
-      branding={branding}
+      // branding={branding}
     >
+
       <DashboardLayout
-         sx={{
+      themeMode="light" 
+              slots={{
+                 appTitle: CustomAppTitle,
+                 toolbarActions: ToolbarActionsSearch,
+                sidebarFooter: SidebarFooter,
+              }}      
+        sx={{
           display: 'flex',
-          flexDirection: 'row', 
+          flexDirection: 'row',
           '& .MuiAppBar-root': {
             padding: 0.5,
           },
-          
+          '& .MuiSwitch-root': {
+            display: 'none',
+          },
         }}
       >
         <DemoPageContent pathname={router.pathname} />
       </DashboardLayout>
+
     </AppProvider>
   );
 }
