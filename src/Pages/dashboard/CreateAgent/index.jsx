@@ -4,10 +4,11 @@ import UploadIcon from '@mui/icons-material/Upload';
 import { useState } from 'react';
 import AgentTabs from './AgentTabs';
 import AgentMainSection from './AgentMainSection';
-import AgentReview from './AgentReview';
 import KnowledgeSection from './KnowledgeSection';
 import AgentAction from './AgentAction';
 import AgentDeploy from './AgentDeploy';
+import ChatComponent from './AgentReview';
+import { Height } from '@mui/icons-material';
 
 const CreateAgent = () => {
      const [tab, setTab] = React.useState(0);
@@ -33,15 +34,15 @@ const CreateAgent = () => {
       };
 
   return (
-    <Grid container spacing={2} className="p-3  bg-gray-50 rounded-lg shadow-md">
+    <Grid container spacing={2}  className="p-1  bg-gray-50 rounded-lg shadow-md">
       <Grid item xs={12} md={6} lg={3}>
         <AgentTabs  handleTabChange={handleTabChange} tab={tab}/>
       </Grid>
-      <Grid item xs={12} md={6} lg={5}>
+      <Grid item xs={12} md={6} lg={5} style={{overflow:'auto'}}>
       {renderTabContent()}
-      </Grid>
+      </Grid> 
       <Grid item xs={12} md={6} lg={4}>
-        <AgentReview />
+        <ChatComponent />
       </Grid>
     </Grid>
 

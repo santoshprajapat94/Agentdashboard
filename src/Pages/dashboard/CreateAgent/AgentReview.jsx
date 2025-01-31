@@ -1,147 +1,103 @@
+import { CircularProgress, IconButton } from '@mui/material';
+import ChatIcon from '@mui/icons-material/Chat';
 import React, { useState } from 'react';
-import { Box, Typography, TextField, Button, Avatar, Rating, Grid } from '@mui/material';
+import { FiSend } from 'react-icons/fi';
 
-const AgentReview = () => {
-    const [reviews, setReviews] = useState([
-        {
-            id: 1,
-            name: 'Alice Johnson',
-            avatar: 'https://i.pravatar.cc/150?img=1',
-            rating: 4,
-            comment: 'Great product! Highly recommend it.',
-        },
-        {
-            id: 2,
-            name: 'John Smith',
-            avatar: 'https://i.pravatar.cc/150?img=2',
-            rating: 5,
-            comment: 'Excellent service and quality!',
-        },
+const ChatComponent = () => {
+    const [loading ,setLoading] = useState(false)
+    const [messages, setMessages] = useState([
+        { sender: 'bot', text: 'Hello! 😊 How can I assist you today?' },
+        { sender: 'bot', text: 'Are you interested in learning more about EHR lOGIC products and services?' },
     ]);
+    const [input, setInput] = useState('');
 
-    const [newReview, setNewReview] = useState({
-        name: '',
-        rating: 0,
-        comment: '',
-    });
+    const handleSendMessage = () => {
+        if (input.trim() === '') return;
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        if (newReview.name && newReview.comment && newReview.rating) {
-            setReviews([
-                ...reviews,
-                {
-                    id: reviews.length + 1,
-                    ...newReview,
-                    avatar: `https://i.pravatar.cc/150?img=${reviews.length + 3}`,
-                },
+        setMessages([...messages, { sender: 'user', text: input }]);
+        setInput('');
+        setTimeout(() => {
+            setMessages((prev) => [
+                ...prev,
+                { sender: 'bot', text: 'Thank you for your query! I will get back to you shortly.' },
             ]);
-            setNewReview({ name: '', rating: 0, comment: '' });
-        }
+        }, 1000);
     };
 
     return (
-        <Grid container spacing={2} className="p-3">
-            <Grid item xs={12} md={12}>
-
-
-                <Typography variant="subtitle1" sx={{ mb: 3, fontWeight: 600, textAlign: 'left' }}>
-                    Customer Review
-                </Typography>
-
-
-                <Box className="space-y-6 mb-4">
-                    {reviews.map((review) => (
-                        <Box
-                            key={review.id}
-                            className="flex items-start space-x-4 p-4 bg-white rounded-lg shadow-sm"
-                            sx={{
-                                textAlign: 'left',
-                            }}
-                        >
-                            <Avatar
-                                src={review.avatar}
-                                alt={review.name}
-                                sx={{
-                                    width: 40,
-                                    height: 40,
-                                }}
-                            />
-                            <Box>
-                                <Typography
-                                    variant="subtitle1"
-                                    className=" font-medium capitalize "
-                                    sx={{
-                                        fontWeight: '600',
-                                        textAlign: 'left',
-                                        mb: 1,
-                                    }}
-                                >
-                                    {review.name}
-                                </Typography>
-                                <Box sx={{ textAlign: 'left', display: 'flex', alignItems: 'center', mb: 1 }}>
-                                    <Rating value={review.rating} readOnly />
-                                </Box>
-                                <Typography
-                                    variant="body2"
-                                    sx={{
-                                        color: 'text.secondary',
-                                        textAlign: 'left',
-                                    }}
-                                >
-                                    {review.comment}
-                                </Typography>
-                            </Box>
-                        </Box>
-                    ))}
-                </Box>
-
-
-                {/* Add Review Form */}
-                <Box component="form" onSubmit={handleSubmit} className="p-4 bg-white rounded-lg shadow-sm">
-                    <Typography variant="subtitle1" xs={{ fontWeight: '600', }} className=" flex align-start" mb={3}>
-                        Leave a Review
-                    </Typography>
-
-                    <TextField
-                        fullWidth
-                        label="Your Name"
-                        variant="outlined"
-                        className="mb-8"
-                        value={newReview.name}
-                        onChange={(e) => setNewReview({ ...newReview, name: e.target.value })}
+        <div className="flex flex-col h-[calc(100vh-80px)] max-w-md mx-auto  text-white rounded-sm shadow-lg">
+            <div className="flex items-center justify-between p-4 bg-gray-100 rounded-t-lg shadow-lg">
+                <div className="flex items-center text-slate-700 space-x-3">
+                    <img
+                        src="https://i.pravatar.cc/150?img=3"
+                        alt="SP"
+                        className="w-10 h-10 rounded-full border-2 border-indigo-500"
                     />
+                    <div>
+                        <h3 className="text-sm font-semibold text-gray-800">Chat With AI</h3>
+                        <p className="text-xs" style={{color:'#12bcab',textAlign:'left'}}>Online</p>
+                    </div>
+                </div>
+                <IconButton
+                    sx={{
+                        padding: '0.5rem',
+                        background: '#1e293b',
+                        color: '#fff',
+                        transition: 'background 0.3s ease, color 0.3s ease',
+                        '&:hover': {
+                        background: '#334155', 
+                        color: '#e2e8f0', 
+                        },
+                    }}
+                    >
+  {loading ? <CircularProgress size={20} sx={{ color: 'white' }} /> : <ChatIcon />}
+</IconButton>
 
-                    <Rating
-                        name="rating"
-                        value={newReview.rating}
-                        onChange={(e, newValue) => setNewReview({ ...newReview, rating: newValue })}
-                        style={{ marginBottom: '1rem', marginTop: '1rem', display: 'flex', alignItems: 'left' }}
+            </div>
 
+            <div className="flex-1 p-2 space-y-4 overflow-y-auto">
+                {messages.map((message, index) => (
+                    <div
+                        key={index}
+                        className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}
+                    >
+                        <div
+                        className={`p-2 rounded-lg text-slate-600 ${message.sender === 'user' ? 'bg-slate-100': 'bg-zinc-200'}`}>
+                            {message.text}
+                        </div>
+                    </div>
+                ))}
+            </div>
+
+            <div className="p-4 bg-gray-100 rounded-b-sm shadow-lg">
+                <div className="flex items-center space-x-2">
+                    <input
+                        type="text"
+                        placeholder="Type your message here"
+                        className="flex-1 px-3 py-2 text-sm text-stone-700 bg-stone-200 text-white rounded-lg focus:outline-none"
+                        value={input}
+                        onChange={(e) => setInput(e.target.value)}
+                        onKeyDown={(e) => e.key === 'Enter' && handleSendMessage()}
                     />
-
-                    <TextField
-                        fullWidth
-                        label="Your Review"
-                        variant="outlined"
-                        multiline
-                        rows={4}
-                        className="mb-6"
-                        value={newReview.comment}
-                        onChange={(e) => setNewReview({ ...newReview, comment: e.target.value })}
-                        style={{ marginBottom: '1rem' }}
-                    />
-
-                    <Button variant="contained"
-                        className='hover:bg-gray-700 w-full'
-                        sx={{ backgroundColor: '#1e293b', color: '#fff' }}
-                        type="submit" >
-                        Submit Review
-                    </Button>
-                </Box>
-            </Grid>
-        </Grid>
+                    <IconButton
+                        sx={{
+                            backgroundColor: '#1e293b',
+                            padding:'0.5rem',
+                            color: '#fff', 
+                            transition: 'background 0.3s ease, color 0.3s ease',
+                            '&:hover': {
+                            background: '#334155', 
+                            color: '#e2e8f0', 
+                            },
+                        }}
+                        type="submit"
+                    >
+                        <FiSend size={20} />
+                    </IconButton>
+                </div>
+            </div>
+        </div>
     );
 };
 
-export default AgentReview;
+export default ChatComponent;

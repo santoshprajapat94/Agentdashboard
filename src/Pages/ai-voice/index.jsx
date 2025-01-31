@@ -353,8 +353,8 @@ const DashboardComp = () => {
         </Card>
       </Grid>
       
-        <Grid item xs={12} lg={9} >
-        <ScrollCard style={{ height:'max-content'}}>
+        <Grid item xs={12} lg={9} sx={{ height:'100%',overflow:"auto"}}>
+        {/* <ScrollCard style={{ height:'100%',overflow:"auto"}}> */}
           <section className='dash-card mt-0 pt-2'>
             <Box
               className='dash__tabs '
@@ -523,7 +523,7 @@ const DashboardComp = () => {
             </Grid>
 
           </Grid>
-          </ScrollCard>
+          {/* </ScrollCard> */}
         </Grid>
       
     </Grid>

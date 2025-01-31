@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button, IconButton, useMediaQuery } from "@mui/material";
 import { Menu as MenuIcon, Close as CloseIcon } from "@mui/icons-material";
+import EhrLogo from "../assets/images/Logo-main-1.svg";
 
 const Header = () => {
   const [userLoggedIn, setUserLoggedIn] = useState(false); 
@@ -27,7 +28,7 @@ const Header = () => {
       <nav className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo */}
         <Link to="/" className="text-3xl font-bold italic">
-          EHR Logic
+          <img src={EhrLogo} srcSet="EHR LOGIC" alt="logo EHR" width='150px'/>
         </Link>
 
         {/* Navigation Menu */}

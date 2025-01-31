@@ -7,6 +7,7 @@ import CloudCircleIcon from '@mui/icons-material/CloudCircle';
 import { AppProvider } from '@toolpad/core/AppProvider';
 import { DashboardLayout, ThemeSwitcher } from '@toolpad/core/DashboardLayout';
 import { useDemoRouter } from '@toolpad/core/internal';
+import EhrLogo from '../../assets/images/Logo-main-1.svg';
 import SettingsIcon from '@mui/icons-material/Settings';
 import CreateAgent from './CreateAgent';
 import SearchIcon from '@mui/icons-material/Search';
@@ -71,7 +72,7 @@ function ToolbarActionsSearch() {
 function CustomAppTitle() {
   return (
     <Stack direction="row" alignItems="center" spacing={1}>
-      <Typography variant="subtitle1" color="#214f89" fontSize={'large'} fontWeight={700}>EHR LOGIC</Typography>
+          <img src={EhrLogo} srcSet="EHR LOGIC" alt="logo EHR" width='150px'/>
     </Stack>
   );
 }
