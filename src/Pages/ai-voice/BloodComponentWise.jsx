@@ -85,7 +85,7 @@ const AvailableBlood = ({ data = [] }) => {
     }
   ]
 
-  return <ReactApexChart options={options} series={series} type='bar' height={373} />
+  return <ReactApexChart options={options} series={series} type='bar' height={373} width={100} />
 }
 
 const BloodComponentWise = () => {

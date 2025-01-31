@@ -69,7 +69,7 @@ const AvailableBlood = ({ data = [] }) => {
     }
   ]
 
-  return <ReactApexChart options={options} series={series} type='bar' height={250} />
+  return <ReactApexChart options={options} series={series} type='bar' height={250} width={100} />
 }
 
 const data = [
@@ -202,7 +202,7 @@ const TtiChart = () => {
               >
                 {category}
               </Typography>
-              <AvailableBlood data={filterDonations(BloodData, category)} />
+              <AvailableBlood data={filterDonations(BloodData, category)}/>
             </Box>
           ))}
         </Box>

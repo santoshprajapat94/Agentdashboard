@@ -7,7 +7,7 @@ const ChatComponent = () => {
     const [loading ,setLoading] = useState(false)
     const [messages, setMessages] = useState([
         { sender: 'bot', text: 'Hello! 😊 How can I assist you today?' },
-        { sender: 'bot', text: 'Are you interested in learning more about vitefire products and services?' },
+        { sender: 'bot', text: 'Are you interested in learning more about EHR lOGIC products and services?' },
     ]);
     const [input, setInput] = useState('');
 

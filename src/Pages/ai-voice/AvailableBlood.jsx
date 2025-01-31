@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import ReactApexcharts from 'react-apexcharts'
-import { Box, Grid, IconButton, Typography } from '@mui/material'
+import { Box, Grid, Hidden, IconButton, Typography } from '@mui/material'
 import { DashboardNoDat } from './WasteChart'
 
 import { bloodGroup, bloodGroupToFilter } from './index'
@@ -253,7 +253,7 @@ const AvailableBlood = () => {
               </section>
             </Grid>
             <Grid item xs={12} lg={4}>
-              <section className='dash-table-40 blood-section py-3'>
+              <section className='dash-table-40 blood-section py-3' style={{overflow:'hidden'}}>
                 <Box>
                   <h3>Available blood components for {bloodGroup[bloodGrp]}</h3>
                 </Box>
@@ -261,7 +261,7 @@ const AvailableBlood = () => {
                   options={chartData.options}
                   series={chartData.series}
                   type='bar'
-                  height={300}
+                  height={430}
                 />
               </section>
             </Grid>

@@ -1,12 +1,8 @@
 import React, { forwardRef, useRef, useState } from 'react'
 import HeaderTabs from './HeaderTabs'
 import { Bar, Line } from 'react-chartjs-2'
-// import ReactApexcharts from 'react-apexcharts'
 import { useEffect } from 'react'
-// import { getEntityInfo } from '../middleware/auth'
-// import { addDays } from 'date-fns'
-// import BankIcon from '../../assets/images/blood-bank-marquee.svg'
-// import CampIcon from '../../assets/images/medical-tent-marquee.svg'
+
 import {
   Box,
   Button,
@@ -24,8 +20,6 @@ import {
 import { BorderBottom, Cached, ChevronLeft, ChevronRight, Refresh } from '@mui/icons-material'
 import { DatePicker } from '@mui/x-date-pickers'
 import dayjs from 'dayjs'
-// import ScrollBar from 'react-perfect-scrollbar'
-// import { Link, useHistory } from 'react-router-dom/cjs/react-router-dom.min'
 import { CategoryScale, LinearScale, Chart } from 'chart.js'
 import AvailableBlood from './AvailableBlood'
 import TtiChart from './TtiChart'
@@ -34,18 +28,7 @@ import WasteChart from './WasteChart'
 import DonorsChart from './DonorsChart'
 import ChatComponent from './chat-ai'
 import ScrollCard from '../../components/ScrollCard'
-// import 'chart.js/auto'
-// import { Timeline } from '@mui/lab'
-// import ActivityItem from './ActivityItem'
-// import Select from 'react-select'
-
-// import BloodRequistionChart from './components/BloodRequistionChart'
-// import CerificateMarqueItem from './components/CerificateMarqueItem'
-// import BlodgroupWiseChart from './components/BlodgroupWiseChart'
-// import RevenueChart from './components/RevenueChart'
-// import OtherChart from './components/OtherChart'
-
-// import { useSettings } from '../../hooks/useSetting'
+import BlodgroupWiseChart from './BlodgroupWiseChart'
 
 Chart.register(CategoryScale, LinearScale)
 
@@ -332,19 +315,9 @@ const DashboardComp = () => {
 
   const getDashboardAuditLog = () => {
     setAuditData(data1)
-
-    // ?filter=patient
-    // const URL = checkTenantId(`audit-logs?filter=patient`)
-    // AxiosHelper.get(URL)
-    //   .then(resp => {
-    //     setAuditData(resp?.data?.data?.data)
-    //   })
-    //   .catch(err => {
-    //     console.log(err)
-    //   })
   }
   return (
-    <Grid sx={{ width: '100%',height:"100vh",overflow:'hidden'}} container ml={0} spacing={1} pb={3}>
+    <Grid sx={{ width: '100%',height:{xs:'auto',sm:'auto',md:'auto',lg:'100vh'},overflow:{xs:'auto',sm:'auto',md:'auto',lg:'hidden'}}} container ml={0} spacing={1} pb={3}>
       <Grid item xs={12} lg={3}>
         <Card
           sx={{ height: '100%', width: '100%', display: 'flex', flexDirection: 'column', gap: 2 }}
@@ -507,7 +480,7 @@ const DashboardComp = () => {
 
             <Grid item xs={12} md={6}>
               <Card sx={{ height: '100%', width: '100%', p: 1 }}>
-                {/* <BlodgroupWiseChart /> */}
+                <BlodgroupWiseChart/>
               </Card>
             </Grid>
             <Grid item xs={12} md={6}>
